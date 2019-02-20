@@ -3,15 +3,12 @@ public class MatrixRow implements HeadNode {
     private Node nextColumn;
 
 
-
-
     //Node Logic
     public Node getNextRow(){
         return nextRow;
     }
     public void setNextRow(Node next){
         nextRow = next;
-
     }
     public Node getNextColumn(){
         return nextColumn;

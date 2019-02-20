@@ -9,7 +9,6 @@ public class ValueNode implements Node {
     //Node Logic
     public Node getNextRow(){
         return nextRow;
-
     }
     public void setNextRow(Node next) {
 
@@ -20,5 +19,4 @@ public class ValueNode implements Node {
     public void setNextColumn(Node next) {
 
     }
-
 }
