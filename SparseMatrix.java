@@ -29,4 +29,20 @@ public class SparseMatrix {
         return null;
     }
 
+    //Setters and getters
+    public int getTotalRows() {
+        return totalRows;
+    }
+
+    public void setTotalRows(int totalRows) {
+        this.totalRows = totalRows;
+    }
+
+    public int getTotalColumns() {
+        return totalColumns;
+    }
+
+    public void setTotalColumns(int totalColumns) {
+        this.totalColumns = totalColumns;
+    }
 }
