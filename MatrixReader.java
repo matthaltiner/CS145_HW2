@@ -1,22 +1,64 @@
-import java.util.*;
 import java.io.File;
+import java.util.Scanner;
+import java.util.NoSuchElementException;
+import java.io.IOException;
 
 public class MatrixReader {
 
     public SparseMatrix read(String file){
-        File matrixA = new File("matrixA.txt");
-        Scanner input = new Scanner(""+matrixA);
 
-        int var = input.nextInt();
-        // error here -- sure if file being read correctly
-        read(file).setTotalRows(input.nextInt());
-        input.nextLine();
-        read(file).setTotalColumns(input.nextInt());
-        input.nextLine();
+        SparseMatrix spar = new SparseMatrix(1,2);
 
-        System.out.println(read(file).getTotalColumns());
-        System.out.println(read(file).getTotalRows());
+        File f = new File(file);
 
-        return read(file);
+        if(f.isFile() && f.canRead()){
+            System.out.println("Good");
+        }
+
+        try(Scanner input = new Scanner(f)){
+            // set the total rows and columns and save them in our sparse matrix
+            spar.setTotalRows((input.nextInt()));
+            input.nextLine();
+            spar.setTotalColumns(input.nextInt());
+            input.nextLine();
+
+
+            int count = 0;
+            // read the matrix provided and save the contents as our sparse matrix as head nodes and value nodes
+            while(input.hasNextLine()){
+
+                // Array for items in matrix separated by " "
+                String inputArray[] = input.nextLine().split(" ");
+
+                for(int i = 0; i < inputArray.length; i++){
+
+                    String individual[] = inputArray[i].split(",");
+
+                    int columnNum = Integer.parseInt(individual[0]);
+                    int value = Integer.parseInt(individual[1]);
+
+                    // put the given matrix in order, of columns, then do this process of creating valueNodes and point them to each other IN ORDER
+                    if(i == 0){
+
+                    }
+
+                    if(count == 0){
+
+                        
+                    }
+                }
+                System.out.println();
+
+            }
+
+        }
+        catch(NoSuchElementException | IOException e){
+            e.printStackTrace();
+        }
+
+        System.out.println("Total rows: " + spar.getTotalRows());
+        System.out.println("Total Columns: " + spar.getTotalColumns());
+
+        return spar;
     }
 }
