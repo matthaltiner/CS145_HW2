@@ -5,6 +5,9 @@ import java.io.IOException;
 
 public class MatrixReader {
 
+    public int columnNum;
+    public int value;
+
     public SparseMatrix read(String file){
 
         SparseMatrix spar = new SparseMatrix(1,2);
@@ -24,7 +27,8 @@ public class MatrixReader {
 
 
             int count = 0;
-            // read the matrix provided and save the contents as our sparse matrix as head nodes and value nodes
+
+            // read the matrix provided and save the contents of our sparse matrix as head nodes and value nodes
             while(input.hasNextLine()){
 
                 // Array for items in matrix separated by " "
@@ -34,20 +38,25 @@ public class MatrixReader {
 
                     String individual[] = inputArray[i].split(",");
 
-                    int columnNum = Integer.parseInt(individual[0]);
-                    int value = Integer.parseInt(individual[1]);
+                    columnNum = Integer.parseInt(individual[0]);
+                    value = Integer.parseInt(individual[1]);
+                    // print to check -- can be commented out
+                    System.out.print(columnNum + "-" + value);
+                    System.out.println();
+                    
 
                     // put the given matrix in order, of columns, then do this process of creating valueNodes and point them to each other IN ORDER
-                    if(i == 0){
+                    //if(i == 0){
 
-                    }
+                    //}
 
-                    if(count == 0){
+                    //if(count == 0){
 
-                        
-                    }
+
+                    //}
                 }
-                System.out.println();
+                //System.out.println();
+
 
             }
 
