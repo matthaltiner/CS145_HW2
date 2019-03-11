@@ -1,27 +1,31 @@
 public class MatrixColumn implements HeadNode {
+
     private Node nextRow;
     private Node nextColumn;
 
     //Node Logic
     public Node getNextRow() {
-        return null;
+        //returns the first valueNode in its column
+        return nextRow;
     }
     public void setNextRow(Node next) {
-
+        this.nextRow = next;
     }
     public Node getNextColumn() {
-        return null;
+        //returns the next MatrixColumn
+        return nextColumn;
     }
     public void setNextColumn(Node next) {
-
+        this.nextColumn = next;
     }
+
 
     //HeadNode Logic
     public HeadNode getNext() {
-        return null;
+        return (HeadNode)nextRow;
     }
     public ValueNode getFirst() {
-        return null;
+        return (ValueNode)nextColumn;
     }
     public void insert(ValueNode value) {
         // should insert a ValueNode in sorted order based on the row and column of the ValueNode being inserted

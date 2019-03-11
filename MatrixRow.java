@@ -1,21 +1,24 @@
-public class MatrixRow implements HeadNode {
+public class MatrixRow implements HeadNode{
+
     private Node nextRow;
     private Node nextColumn;
 
-
     //Node Logic
     public Node getNextRow(){
+        //returns the next MatrixRow
         return nextRow;
     }
     public void setNextRow(Node next){
-        nextRow = next;
+        this.nextRow = next;
     }
     public Node getNextColumn(){
+        //returns the first valueNode in its row
         return nextColumn;
     }
     public void setNextColumn(Node next){
-        nextColumn = next;
+        this.nextColumn = next;
     }
+
 
     //HeadNode Logic
     public HeadNode getNext(){

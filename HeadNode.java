@@ -4,4 +4,5 @@ public interface HeadNode extends Node {
     void insert(ValueNode value);
     int get(int position);
 
+
 }
