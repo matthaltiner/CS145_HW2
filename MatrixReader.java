@@ -8,6 +8,7 @@ public class MatrixReader {
 
     public SparseMatrix read(String file){
 
+
         //Access and read our sparse matrix file!!
         try{
             File f = new File(file);
@@ -22,6 +23,8 @@ public class MatrixReader {
 
             // create new SparseMatrix called "spar"
             SparseMatrix spar = new SparseMatrix(rows, columns);
+
+            System.out.println("MAtricReder Wroked!");
 
             //read the matrix provided and save the contents of our sparse matrix as head nodes and value nodes
             int rowNum = 1;
@@ -39,18 +42,18 @@ public class MatrixReader {
                     int value = Integer.parseInt(individual[1]);
 
                     //call insert on SparseMatrix
-                    SparseMatrix.insert(rowNum, columnNum, value);
+                    spar.insert(rowNum, columnNum, value);
 
                     // A TEST FOR CHECKING CURRENT LINE VALUES:
                     //System.out.print(currentLine[i] + " " );
                 }
                 rowNum++;
 
-                if(!currentLine.equals(null)){
+                /*if(!currentLine.equals(null)){
                     String[] rowFirstValueNode = currentLine[0].split(",");
                     System.out.println(rowFirstValueNode[0]);
-                }
-                System.out.println();
+                }*/
+                //System.out.println();
             }
             //return our sparse matrix all nice and pretty looking!
             return spar;
@@ -66,4 +69,87 @@ public class MatrixReader {
         System.out.println("Uh Oh, looks like you crashed windows, need some help?");
         return null;
     }
-}
+
+
+
+
+
+
+
+
+
+
+    }
+
+       /* //Access and read our sparse matrix file!!
+        try{
+            File f = new File(file);
+            Scanner input = new Scanner(f);
+
+            //Set the total rows and columns and save them in our sparse matrix
+            int rows = input.nextInt();
+            input.nextLine();
+            int columns = input.nextInt();
+            input.nextLine();
+
+            // create new SparseMatrix called "spar"
+            SparseMatrix spar = new SparseMatrix(rows, columns);
+
+
+
+            //read the matrix provided and save the contents as our sparse matrix as head nodes and value nodes
+            int rowCount = 1;
+            //iterate through each row of the matrix, down
+            while(input.hasNextLine()){
+
+                String inputArray[] = input.nextLine().split(" ");
+
+                //iterate through each column right
+                for(int i = 0; i < inputArray.length; i++){
+
+                    String individual[] = inputArray[i].split(",");
+
+
+                    int columnNum = Integer.parseInt(individual[0]);
+                    int value = Integer.parseInt(individual[1]);
+
+                    //put the given matrix in order, of columns, then do this process of creating valueNodes and point them to each other IN ORDER
+
+                    //Assuming that each line has a real value
+                    if(rowCount == 1 && i ==0){
+                        //create a matrixRow and set
+                    }
+
+
+
+                    //inputArr[count][i] = inputArray[i];//.split(",");
+                    System.out.print(inputArray[i] + " " );
+                    rowCount++;
+                }
+
+                if(!inputArray.equals(null)){
+                    String rowFirstValueNode[] = inputArray[0].split(",");
+
+                }
+
+                System.out.println();
+
+                rowCount++;
+            }
+            //return our sparse matrix all nice and pretty looking!
+            return spar;
+        }
+
+        //Error out if our file isn't find
+        catch(NoSuchElementException | IOException e){
+            System.out.println("File not found.");
+            e.printStackTrace();
+        }
+
+        //return
+        System.out.println("Uh Oh, looks like you crashed windows, need some help?");
+        return null;
+    }*/
+
+
+

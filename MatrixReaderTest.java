@@ -6,7 +6,7 @@ import java.util.NoSuchElementException;
 public class MatrixReaderTest {
     public void run() {
         MatrixReader mr = new MatrixReader();
-        mr.read("matrixA.txt");
+        mr.read("matrixA");
 
     }
 
