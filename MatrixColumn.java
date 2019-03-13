@@ -39,8 +39,8 @@ public class MatrixColumn implements HeadNode {
 
 
             //if there's only one valueNode in that column set the new ValueNode for right after
-            if(cur.getNextColumn() == null){
-                cur.setNextColumn(value);
+            if(cur.getNextRow() == null){
+                cur.setNextRow(value);
             }
             else {
                 colLoop: for (int i = 1; i < value.getRow() + 1; i++) {

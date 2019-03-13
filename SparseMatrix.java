@@ -127,8 +127,75 @@ public class SparseMatrix {
         return tranSpar;
     }
 
-    public SparseMatrix product(SparseMatrix other){
-        return null;
+    public SparseMatrix product(SparseMatrix other) {
+        if (totalColumns != other.getTotalRows()) {
+            System.out.println("The matrices have incompatible sizes.");
+            System.out.println("Make sure that the first matrix has the same number of columns as the second matrix has rows.");
+            return null;
+        }
+        SparseMatrix productSpar = new SparseMatrix(totalRows, other.getTotalColumns());
+        //HeadNode curRowA = (HeadNode) firstRow.getNextRow();
+        ValueNode curColumnA = ((MatrixRow) firstRow.getNextRow()).getNextColumn();
+        //HeadNode curRowB = (HeadNode) other.firstRow.getNextRow();
+        HeadNode curColumnB = (HeadNode)other.firstColumn.getNextColumn();
+        ValueNode iterateColumnB = ((MatrixColumn) other.firstColumn.getNextColumn()).getNextRow();
+
+        //for each row in MatrixA
+        for (int i = 1; i < totalRows + 1; i++) {
+            //for each column in MatrixB
+            for (int j = 1; j < other.totalColumns + 1; j++) {
+
+                int toInsert = 0;
+                //multiply corresponding item from A's row by item in B's column
+
+                for(int itemInRow = 1; itemInRow < totalColumns + 1; itemInRow++){
+                    if(iterateColumnB != null && iterateColumnB.getRow() == itemInRow) {
+                        if (curColumnA != null && curColumnA.getColumn() == itemInRow) {
+
+                            int itemValueA = curColumnA.getValue();
+                            int itemValueB = iterateColumnB.getValue();
+                            //add to toInsert
+                            toInsert = toInsert + (itemValueA * itemValueB);
+                        }
+                    }
+                    //move to next item in both matrices
+                    if(curColumnA != null && curColumnA.getColumn() == itemInRow) {
+                        curColumnA = curColumnA.getNextColumn();
+                    }
+
+                    if(iterateColumnB != null && iterateColumnB.getRow() == itemInRow) {
+                        iterateColumnB = iterateColumnB.getNextRow();
+                    }
+
+
+                }
+
+                productSpar.insert(i, j, toInsert);
+
+                curColumnA = ((MatrixRow) firstRow.getNextRow()).getNextColumn();
+
+                curColumnB = ((MatrixColumn) other.firstColumn.getNextColumn());
+                for(int whichColumn = 1; whichColumn < j; whichColumn++){
+                    if(curColumnB != null) {
+                        curColumnB = (HeadNode)curColumnB.getNextColumn();
+                    }
+                   //curColumnB = curColumnB.getNextColumn();
+                }
+
+                iterateColumnB = ((MatrixColumn) curColumnB).getNextRow();
+
+            }
+            curColumnA = ((MatrixRow) firstRow.getNextRow()).getNextColumn();
+            for(int whichRow = 1; whichRow < i +1; whichRow++){
+                if(curColumnA != null) {
+                    curColumnA = curColumnA.getNextColumn();
+                }
+
+                //curColumnA = curColumnA.getNextRow();
+            }
+
+        }
+        return productSpar;
     }
 
     //Getters and Setters

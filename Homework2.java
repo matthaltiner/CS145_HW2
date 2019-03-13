@@ -4,16 +4,19 @@ public class Homework2 {
         MatrixReader mt = new MatrixReader();
         //create and save the sparseMatrix for MatrixA
         SparseMatrix sparseMatrixA = mt.read("MatrixA.txt");
-        sparseMatrixA.print();
+        //sparseMatrixA.print();
         SparseMatrix tranSparA = sparseMatrixA.transpose();
-        tranSparA.print();
+        //tranSparA.print();
 
         //create and save the sparseMatrix for MatrixB
         SparseMatrix sparseMatrixB = mt.read("MatrixB.txt");
-        sparseMatrixB.print();
+        //sparseMatrixB.print();
         SparseMatrix tranSparB = sparseMatrixB.transpose();
-        tranSparB.print();
+        //tranSparB.print();
 
+        //product of both matrices
+        SparseMatrix productMatrix = sparseMatrixA.product(sparseMatrixB);
+        productMatrix.print();
 
     }
 }
